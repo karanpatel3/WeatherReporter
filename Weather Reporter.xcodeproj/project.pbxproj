@@ -14,6 +14,9 @@
 		7D175B32244BE77A0014BD9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D175B30244BE77A0014BD9F /* Main.storyboard */; };
 		7D175B34244BE77B0014BD9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D175B33244BE77B0014BD9F /* Assets.xcassets */; };
 		7D175B37244BE77B0014BD9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D175B35244BE77B0014BD9F /* LaunchScreen.storyboard */; };
+		7D175B47244BE9FA0014BD9F /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B46244BE9FA0014BD9F /* WeatherManager.swift */; };
+		7D175B49244BEA1C0014BD9F /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B48244BEA1C0014BD9F /* WeatherModel.swift */; };
+		7D175B4B244BEA430014BD9F /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B4A244BEA430014BD9F /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		7D175B33244BE77B0014BD9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D175B36244BE77B0014BD9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D175B38244BE77B0014BD9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D175B46244BE9FA0014BD9F /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		7D175B48244BEA1C0014BD9F /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		7D175B4A244BEA430014BD9F /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				7D175B33244BE77B0014BD9F /* Assets.xcassets */,
 				7D175B35244BE77B0014BD9F /* LaunchScreen.storyboard */,
 				7D175B38244BE77B0014BD9F /* Info.plist */,
+				7D175B46244BE9FA0014BD9F /* WeatherManager.swift */,
+				7D175B48244BEA1C0014BD9F /* WeatherModel.swift */,
+				7D175B4A244BEA430014BD9F /* WeatherData.swift */,
 			);
 			path = "Weather Reporter";
 			sourceTree = "<group>";
@@ -143,7 +152,10 @@
 			files = (
 				7D175B2F244BE77A0014BD9F /* SecondViewController.swift in Sources */,
 				7D175B2D244BE77A0014BD9F /* FirstViewController.swift in Sources */,
+				7D175B4B244BEA430014BD9F /* WeatherData.swift in Sources */,
+				7D175B47244BE9FA0014BD9F /* WeatherManager.swift in Sources */,
 				7D175B29244BE77A0014BD9F /* AppDelegate.swift in Sources */,
+				7D175B49244BEA1C0014BD9F /* WeatherModel.swift in Sources */,
 				7D175B2B244BE77A0014BD9F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,7 +232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
