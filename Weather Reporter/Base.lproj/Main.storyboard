@@ -122,7 +122,7 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
-        <!--Second-->
+        <!--Search-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Weather_Reporter" customModuleProvider="target" sceneMemberID="viewController">
@@ -130,7 +130,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="eZz-2o-NEd">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="1D1-gm-Gjh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="eZz-2o-NEd">
                                 <rect key="frame" x="20" y="44" width="363" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYN-RE-ZgB">
@@ -163,16 +166,37 @@
                                 </subviews>
                                 <variation key="heightClass=regular" distribution="fillProportionally"/>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NNP-JN-cIT">
-                                <rect key="frame" x="20" y="171" width="374" height="642"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NNP-JN-cIT">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Z0G-dR-BVm">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z0G-dR-BVm" id="Eed-08-BFY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="eZz-2o-NEd" firstAttribute="top" secondItem="ee1-a7-PyL" secondAttribute="top" id="7aE-Sw-aj9"/>
+                            <constraint firstItem="NNP-JN-cIT" firstAttribute="top" secondItem="eZz-2o-NEd" secondAttribute="bottom" constant="8" id="8Kd-4E-wAc"/>
+                            <constraint firstItem="1D1-gm-Gjh" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="topMargin" constant="-44" id="Ca4-ZV-v4t"/>
+                            <constraint firstItem="NNP-JN-cIT" firstAttribute="leading" secondItem="ee1-a7-PyL" secondAttribute="leading" id="Hph-vw-kUB"/>
+                            <constraint firstItem="NNP-JN-cIT" firstAttribute="bottom" secondItem="ee1-a7-PyL" secondAttribute="bottom" id="Suw-gJ-txp"/>
+                            <constraint firstItem="1D1-gm-Gjh" firstAttribute="leading" secondItem="NNP-JN-cIT" secondAttribute="leading" id="Y8h-SX-lVd"/>
+                            <constraint firstItem="1D1-gm-Gjh" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="avr-JU-mbe"/>
+                            <constraint firstItem="1D1-gm-Gjh" firstAttribute="trailing" secondItem="NNP-JN-cIT" secondAttribute="trailing" id="bwk-9P-CC4"/>
+                            <constraint firstItem="eZz-2o-NEd" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="mSw-Ph-3wr"/>
+                            <constraint firstItem="1D1-gm-Gjh" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="swf-iR-5xe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ee1-a7-PyL"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="searchTextField" destination="ieB-kn-t4H" id="9sQ-s8-m4z"/>
                     </connections>
@@ -201,10 +225,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="836" height="661"/>
+        <image name="first" width="898" height="1600"/>
         <image name="location.circle.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="paperplane" catalog="system" width="128" height="121"/>
+        <image name="second" width="898" height="1600"/>
         <image name="sun.max" catalog="system" width="128" height="124"/>
     </resources>
 </document>
