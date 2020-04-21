@@ -21,9 +21,12 @@ struct WeatherManager {
     
     var delegate: WeatherManagerDelegate?
     
-    func fetchWeather(cityName: String)
+    func fetchWeather(cityName: String!)
     {
-        let urlString = "\(weatherURL)&q=\(cityName)"
+//        fix to allow cities with two words ex: New York
+        let cityName = String(cityName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        print(cityName)
+        let urlString = "\(weatherURL)&q=\(String(describing: cityName))"
         print(urlString)
         performRequest(with: urlString)
     }

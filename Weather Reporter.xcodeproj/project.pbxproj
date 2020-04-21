@@ -17,6 +17,7 @@
 		7D175B47244BE9FA0014BD9F /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B46244BE9FA0014BD9F /* WeatherManager.swift */; };
 		7D175B49244BEA1C0014BD9F /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B48244BEA1C0014BD9F /* WeatherModel.swift */; };
 		7D175B4B244BEA430014BD9F /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B4A244BEA430014BD9F /* WeatherData.swift */; };
+		7D68D93B244EA580008004BD /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D68D93A244EA580008004BD /* WeatherForecast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		7D175B46244BE9FA0014BD9F /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		7D175B48244BEA1C0014BD9F /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		7D175B4A244BEA430014BD9F /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		7D68D93A244EA580008004BD /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				7D175B46244BE9FA0014BD9F /* WeatherManager.swift */,
 				7D175B48244BEA1C0014BD9F /* WeatherModel.swift */,
 				7D175B4A244BEA430014BD9F /* WeatherData.swift */,
+				7D68D93A244EA580008004BD /* WeatherForecast.swift */,
 			);
 			path = "Weather Reporter";
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				7D175B29244BE77A0014BD9F /* AppDelegate.swift in Sources */,
 				7D175B49244BEA1C0014BD9F /* WeatherModel.swift in Sources */,
 				7D175B2B244BE77A0014BD9F /* SceneDelegate.swift in Sources */,
+				7D68D93B244EA580008004BD /* WeatherForecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
