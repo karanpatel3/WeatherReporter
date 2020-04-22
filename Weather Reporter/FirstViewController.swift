@@ -16,7 +16,8 @@ class FirstViewController: UIViewController {
         @IBOutlet weak var temperatureLabel: UILabel!
         @IBOutlet weak var cityLabel: UILabel!
         @IBOutlet weak var searchTextField: UITextField!
-        
+        @IBOutlet weak var descriptionLabel: UILabel!
+    
         var weatherManager = WeatherManager()
         let locationManager = CLLocationManager()
         
@@ -79,6 +80,7 @@ class FirstViewController: UIViewController {
             
             DispatchQueue.main.async { // Correct
                 self.temperatureLabel.text = weather.temperatureString
+                self.descriptionLabel.text = weather.description.capitalized
                 self.conditionImageView.image = UIImage(systemName: weather.conditionName)
                 self.cityLabel.text = weather.cityName
             }
