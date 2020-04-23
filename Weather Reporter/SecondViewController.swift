@@ -12,10 +12,12 @@ class SecondViewController: UIViewController {
 
     
 @IBOutlet weak var searchTextField: UITextField!
- 
+    
+
+    @IBOutlet weak var cell1: ForecastTableViewCell!
     
     var weatherForecast = WeatherForecast()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,7 +52,7 @@ class SecondViewController: UIViewController {
             
             if let city = searchTextField.text {
                 weatherForecast.fetchWeather(cityName: city)
-                print(city)
+                //print(city)
             }
             
             searchTextField.text = ""
@@ -59,12 +61,12 @@ class SecondViewController: UIViewController {
 
 
 extension SecondViewController: WeatherForecastDelegate {
-    func didUpdateWeather(_ weatherForecast: WeatherForecast, weather: WeatherFModel) {
+    func didUpdateWeather(_ weatherForecast: WeatherForecast, weathers: [WeatherFModel]) {
         
+        print(weathers)
         DispatchQueue.main.async { // Correct
-            
+
         }
-        
         
     }
     

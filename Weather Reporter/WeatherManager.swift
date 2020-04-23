@@ -82,8 +82,8 @@ func parseJSON(_ weatherData: Data) -> WeatherModel?{
         
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let id = (decodedData.weather![0].id)
-            let temp = decodedData.main!.temp
+            let id = (decodedData.weather[0].id)
+            let temp = decodedData.main.temp
             let name = decodedData.name
             let desc = decodedData.weather[0].description
             let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp, description: desc)
