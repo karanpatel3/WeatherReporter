@@ -11,13 +11,13 @@ import CoreLocation
 
 
 protocol WeatherForecastDelegate {
-    func didUpdateWeather(_ weatherForecast: WeatherForecast, weather: WeatherModel)
+    func didUpdateWeather(_ weatherForecast: WeatherForecast, weather: WeatherFModel)
     func didFailWithError(error: Error)
 }
 
 
 struct WeatherForecast {
-let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
+let weatherURL = "https://api.openweathermap.org/data/2.5/forecast?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
 
 var delegate: WeatherForecastDelegate?
 
@@ -57,15 +57,17 @@ func performRequest(with urlString: String) {
     
 }
 
-func parseJSON(_ weatherData: Data) -> WeatherModel?{
+func parseJSON(_ weatherData: Data) -> WeatherFModel?{
     let decoder = JSONDecoder()
-    
     do {
         let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-        let id = (decodedData.weather[0].id)
-        let temp = decodedData.main.temp
-        let name = decodedData.name
-        let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+        let min = decodedData.list![0].main!.temp_min
+
+        let max = decodedData.list![0].main!.temp_max
+
+
+        let id = decodedData.list![0].weather![0].id!
+        let weather = WeatherFModel(conditionId: id, min: min!, max: max!)
         return weather
     } catch {
         delegate?.didFailWithError(error: error)

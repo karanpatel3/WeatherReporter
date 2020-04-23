@@ -60,15 +60,32 @@ struct WeatherManager {
         
     }
     
-    func parseJSON(_ weatherData: Data) -> WeatherModel?{
+//    func parseJSON(_ weatherData: Data) -> WeatherModel?{
+//        let decoder = JSONDecoder()
+//
+//        do {
+//            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+//            let id = (decodedData.weather[0].id)
+//            let temp = decodedData.main.temp
+//            let name = decodedData.name
+//            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+//            return weather
+//        } catch {
+//            delegate?.didFailWithError(error: error)
+//            return nil
+//        }
+//
+//    }
+    
+func parseJSON(_ weatherData: Data) -> WeatherModel?{
         let decoder = JSONDecoder()
         
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let id = (decodedData.weather[0].id)
-            let temp = decodedData.main.temp
+            let id = (decodedData.weather![0].id)
+            let temp = decodedData.main!.temp
             let name = decodedData.name
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            let weather = WeatherModel(conditionId: id!, cityName: name!, temperature: temp!)
             return weather
         } catch {
             delegate?.didFailWithError(error: error)
@@ -76,8 +93,6 @@ struct WeatherManager {
         }
         
     }
-    
-    
 
     }
 
