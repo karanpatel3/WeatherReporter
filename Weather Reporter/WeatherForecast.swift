@@ -31,7 +31,9 @@ func fetchWeather(cityName: String)
 }
 
 func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-    let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
+    let cnt = 7
+    let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)&cnt=\(cnt)"
+    print(urlString)
     performRequest(with: urlString)
 }
 

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EE2228F245241F900292E85 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE2228E245241F900292E85 /* ForecastTableViewCell.swift */; };
 		7D175B29244BE77A0014BD9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B28244BE77A0014BD9F /* AppDelegate.swift */; };
 		7D175B2B244BE77A0014BD9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */; };
 		7D175B2D244BE77A0014BD9F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B2C244BE77A0014BD9F /* FirstViewController.swift */; };
@@ -24,7 +23,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3EE2228E245241F900292E85 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForecastTableViewCell.swift; path = ../../../.Trash/ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		7D175B25244BE77A0014BD9F /* Weather Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Reporter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D175B28244BE77A0014BD9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */,
 				7D175B2C244BE77A0014BD9F /* FirstViewController.swift */,
 				7D175B2E244BE77A0014BD9F /* SecondViewController.swift */,
-				3EE2228E245241F900292E85 /* ForecastTableViewCell.swift */,
 				7D175B30244BE77A0014BD9F /* Main.storyboard */,
 				7D175B33244BE77B0014BD9F /* Assets.xcassets */,
 				7D175B35244BE77B0014BD9F /* LaunchScreen.storyboard */,
@@ -178,7 +175,6 @@
 				7D175B29244BE77A0014BD9F /* AppDelegate.swift in Sources */,
 				7D175B49244BEA1C0014BD9F /* WeatherModel.swift in Sources */,
 				7D175B2B244BE77A0014BD9F /* SceneDelegate.swift in Sources */,
-				3EE2228F245241F900292E85 /* ForecastTableViewCell.swift in Sources */,
 				7D68D93B244EA580008004BD /* WeatherForecast.swift in Sources */,
 				7D416A1F244FF77F0096D37D /* WeatherFModel.swift in Sources */,
 			);
