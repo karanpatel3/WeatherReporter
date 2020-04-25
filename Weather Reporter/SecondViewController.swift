@@ -93,7 +93,8 @@ extension SecondViewController: WeatherForecastDelegate {
         DispatchQueue.main.async {
             self.cityName.text = weathers[0].cityName
             for (i, imageView) in images.enumerated(){
-                imageView?.image = UIImage(systemName: weathers[i].weather.conditionName)
+                //imageView?.image = UIImage(systemName: weathers[i].weather.conditionName)
+                imageView?.image = UIImage(named: weathers[i].weather.conditionName)
                 descriptions[i]?.text = weathers[i].weather.description.capitalized
                 temps[i]?.text = weathers[i].weather.temperatureString
             }

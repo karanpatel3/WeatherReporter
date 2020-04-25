@@ -81,7 +81,8 @@ class FirstViewController: UIViewController {
             DispatchQueue.main.async { // Correct
                 self.temperatureLabel.text = weather.temperatureString
                 self.descriptionLabel.text = weather.description.capitalized
-                self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+                //self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+                self.conditionImageView.image = UIImage(named: weather.conditionName)
                 self.cityLabel.text = weather.cityName
             }
             

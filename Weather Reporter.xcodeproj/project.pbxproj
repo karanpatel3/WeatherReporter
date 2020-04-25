@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EE222952454A78400292E85 /* credits in Resources */ = {isa = PBXBuildFile; fileRef = 3EE222942454A78400292E85 /* credits */; };
 		7D175B29244BE77A0014BD9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B28244BE77A0014BD9F /* AppDelegate.swift */; };
 		7D175B2B244BE77A0014BD9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */; };
 		7D175B2D244BE77A0014BD9F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B2C244BE77A0014BD9F /* FirstViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3EE222942454A78400292E85 /* credits */ = {isa = PBXFileReference; lastKnownFileType = text; name = credits; path = "Weather Reporter/credits"; sourceTree = SOURCE_ROOT; };
 		7D175B25244BE77A0014BD9F /* Weather Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Reporter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D175B28244BE77A0014BD9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				7D68D93A244EA580008004BD /* WeatherForecast.swift */,
 				7D416A1C244FF4860096D37D /* WeatherFData.swift */,
 				7D416A1E244FF77F0096D37D /* WeatherFModel.swift */,
+				3EE222942454A78400292E85 /* credits */,
 			);
 			path = "Weather Reporter";
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D175B37244BE77B0014BD9F /* LaunchScreen.storyboard in Resources */,
+				3EE222952454A78400292E85 /* credits in Resources */,
 				7D175B34244BE77B0014BD9F /* Assets.xcassets in Resources */,
 				7D175B32244BE77A0014BD9F /* Main.storyboard in Resources */,
 			);
