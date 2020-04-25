@@ -33,6 +33,12 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var temp4: UILabel!
     @IBOutlet weak var temp5: UILabel!
     
+    @IBOutlet weak var dt1: UILabel!
+    @IBOutlet weak var dt2: UILabel!
+    @IBOutlet weak var dt3: UILabel!
+    @IBOutlet weak var dt4: UILabel!
+    @IBOutlet weak var dt5: UILabel!
+    
     let locationManager = CLLocationManager()
     
     var weatherForecast = WeatherForecast()
@@ -85,15 +91,32 @@ class SecondViewController: UIViewController {
 
 
 extension SecondViewController: WeatherForecastDelegate {
+    func getDateTime(timestamp: Int) -> String {
+        var strDate = "undefined"
+            
+
+        let date = Date(timeIntervalSince1970: Double(timestamp))
+        let dateFormatter = DateFormatter()
+        let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
+        dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM/dd" //Specify your format that you want
+        strDate = dateFormatter.string(from: date)
+            
+        return strDate
+    }
+
     func didUpdateWeather(_ weatherForecast: WeatherForecast, weathers: [WeatherFModel]) {
         let images = [self.image1, self.image2, self.image3, self.image4, self.image5]
         let descriptions = [self.desc1, self.desc2, self.desc3, self.desc4, self.desc5]
         let temps = [self.temp1, self.temp2, self.temp3, self.temp4, self.temp5]
+        let dts = [self.dt1, self.dt2, self.dt3, self.dt4, self.dt5]
         //print(weathers)
         DispatchQueue.main.async {
             self.cityName.text = weathers[0].cityName
             for (i, imageView) in images.enumerated(){
                 //imageView?.image = UIImage(systemName: weathers[i].weather.conditionName)
+                dts[i]?.text = self.getDateTime(timestamp: weathers[i].dateTime)
                 imageView?.image = UIImage(named: weathers[i].weather.conditionName)
                 descriptions[i]?.text = weathers[i].weather.description.capitalized
                 temps[i]?.text = weathers[i].weather.temperatureString

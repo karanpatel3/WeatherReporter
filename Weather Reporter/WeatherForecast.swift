@@ -67,13 +67,14 @@ func parseJSON(_ weatherFData: Data) -> [WeatherFModel]?{
         var weatherFModels = [WeatherFModel]()
         for day in decodedData.list{
             let tem = day.temp.day
+            let dt = day.dt
             //let feels = day.feels_like
             let press = day.pressure
             let humi = day.humidity
             let id = (day.weather[0].id)
             let desc = day.weather[0].description
             let weather = WeatherModel(conditionId: id, cityName: name, temperature: tem, description: desc)
-            weatherFModels.append(WeatherFModel(cityName: name, pressure: press, humidity: humi, weather: weather))
+            weatherFModels.append(WeatherFModel(dateTime: dt, cityName: name, pressure: press, humidity: humi, weather: weather))
         }
         return weatherFModels
         
