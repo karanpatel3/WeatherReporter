@@ -9,35 +9,16 @@
 import UIKit
 import CoreLocation
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
 
     
     @IBOutlet weak var searchTextField: UITextField!
 
     @IBOutlet weak var cityName: UILabel!
-    @IBOutlet weak var image1: UIImageView!
-    @IBOutlet weak var image2: UIImageView!
-    @IBOutlet weak var image3: UIImageView!
-    @IBOutlet weak var image4: UIImageView!
-    @IBOutlet weak var image5: UIImageView!
+    @IBOutlet weak var table: UITableView!
     
-    @IBOutlet weak var desc1: UILabel!
-    @IBOutlet weak var desc2: UILabel!
-    @IBOutlet weak var desc3: UILabel!
-    @IBOutlet weak var desc4: UILabel!
-    @IBOutlet weak var desc5: UILabel!
-    
-    @IBOutlet weak var temp1: UILabel!
-    @IBOutlet weak var temp2: UILabel!
-    @IBOutlet weak var temp3: UILabel!
-    @IBOutlet weak var temp4: UILabel!
-    @IBOutlet weak var temp5: UILabel!
-    
-    @IBOutlet weak var dt1: UILabel!
-    @IBOutlet weak var dt2: UILabel!
-    @IBOutlet weak var dt3: UILabel!
-    @IBOutlet weak var dt4: UILabel!
-    @IBOutlet weak var dt5: UILabel!
+    var models = [WeatherFModel]()
     
     let locationManager = CLLocationManager()
     
@@ -51,7 +32,51 @@ class SecondViewController: UIViewController {
         locationManager.requestLocation()
         weatherForecast.delegate = self
         searchTextField.delegate = self
+        
+        table.delegate = self
+        table.dataSource = self
+        
+        self.table.reloadData()
+        
     }
+    
+    func getDateTime(timestamp: Int) -> String {
+        var strDate = "undefined"
+            
+
+        let date = Date(timeIntervalSince1970: Double(timestamp))
+        let dateFormatter = DateFormatter()
+        let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
+        dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "MM/dd" //Specify your format that you want
+        strDate = dateFormatter.string(from: date)
+            
+        return strDate
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return models.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        self.table.backgroundColor = .clear
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherTableViewCell", for: indexPath) as! WeatherTableViewCell
+        
+        let w = models[indexPath.row]
+        
+        cell.date.text = self.getDateTime(timestamp: w.dateTime)
+        cell.icon.image = UIImage(named: w.weather.conditionName)
+        cell.desc.text = w.weather.description.capitalized
+        cell.temp.text = "\(w.weather.temperatureString)°F"
+        
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
+    
     
     
 }
@@ -91,36 +116,25 @@ class SecondViewController: UIViewController {
 
 
 extension SecondViewController: WeatherForecastDelegate {
-    func getDateTime(timestamp: Int) -> String {
-        var strDate = "undefined"
-            
-
-        let date = Date(timeIntervalSince1970: Double(timestamp))
-        let dateFormatter = DateFormatter()
-        let timezone = TimeZone.current.abbreviation() ?? "CET"  // get current TimeZone abbreviation or set to CET
-        dateFormatter.timeZone = TimeZone(abbreviation: timezone) //Set timezone that you want
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "MM/dd" //Specify your format that you want
-        strDate = dateFormatter.string(from: date)
-            
-        return strDate
-    }
 
     func didUpdateWeather(_ weatherForecast: WeatherForecast, weathers: [WeatherFModel]) {
-        let images = [self.image1, self.image2, self.image3, self.image4, self.image5]
-        let descriptions = [self.desc1, self.desc2, self.desc3, self.desc4, self.desc5]
-        let temps = [self.temp1, self.temp2, self.temp3, self.temp4, self.temp5]
-        let dts = [self.dt1, self.dt2, self.dt3, self.dt4, self.dt5]
+        self.models = weathers
+//        let images = [self.image1, self.image2, self.image3, self.image4, self.image5]
+//        let descriptions = [self.desc1, self.desc2, self.desc3, self.desc4, self.desc5]
+//        let temps = [self.temp1, self.temp2, self.temp3, self.temp4, self.temp5]
+//        let dts = [self.dt1, self.dt2, self.dt3, self.dt4, self.dt5]
         //print(weathers)
         DispatchQueue.main.async {
+            self.table.reloadData()
             self.cityName.text = weathers[0].cityName
-            for (i, imageView) in images.enumerated(){
-                //imageView?.image = UIImage(systemName: weathers[i].weather.conditionName)
-                dts[i]?.text = self.getDateTime(timestamp: weathers[i].dateTime)
-                imageView?.image = UIImage(named: weathers[i].weather.conditionName)
-                descriptions[i]?.text = weathers[i].weather.description.capitalized
-                temps[i]?.text = weathers[i].weather.temperatureString
-            }
+//            self.cityName.text = weathers[0].cityName
+//            for (i, imageView) in images.enumerated(){
+//                //imageView?.image = UIImage(systemName: weathers[i].weather.conditionName)
+//                dts[i]?.text = self.getDateTime(timestamp: weathers[i].dateTime)
+//                imageView?.image = UIImage(named: weathers[i].weather.conditionName)
+//                descriptions[i]?.text = weathers[i].weather.description.capitalized
+//                temps[i]?.text = weathers[i].weather.temperatureString
+//            }
         }
         
     }
@@ -139,6 +153,7 @@ extension SecondViewController: CLLocationManagerDelegate {
             let lon = location.coordinate.longitude
             weatherForecast.fetchWeather(latitude: lat, longitude: lon)
         }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

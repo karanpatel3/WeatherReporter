@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E488C872454E55D00375AD8 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E488C862454E55D00375AD8 /* WeatherTableViewCell.swift */; };
 		3EE222952454A78400292E85 /* credits in Resources */ = {isa = PBXBuildFile; fileRef = 3EE222942454A78400292E85 /* credits */; };
 		7D175B29244BE77A0014BD9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B28244BE77A0014BD9F /* AppDelegate.swift */; };
 		7D175B2B244BE77A0014BD9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E488C862454E55D00375AD8 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
 		3EE222942454A78400292E85 /* credits */ = {isa = PBXFileReference; lastKnownFileType = text; name = credits; path = "Weather Reporter/credits"; sourceTree = SOURCE_ROOT; };
 		7D175B25244BE77A0014BD9F /* Weather Reporter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Reporter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D175B28244BE77A0014BD9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				7D175B2A244BE77A0014BD9F /* SceneDelegate.swift */,
 				7D175B2C244BE77A0014BD9F /* FirstViewController.swift */,
 				7D175B2E244BE77A0014BD9F /* SecondViewController.swift */,
+				3E488C862454E55D00375AD8 /* WeatherTableViewCell.swift */,
 				7D175B30244BE77A0014BD9F /* Main.storyboard */,
 				7D175B33244BE77B0014BD9F /* Assets.xcassets */,
 				7D175B35244BE77B0014BD9F /* LaunchScreen.storyboard */,
@@ -173,6 +176,7 @@
 			files = (
 				7D175B2F244BE77A0014BD9F /* SecondViewController.swift in Sources */,
 				7D175B2D244BE77A0014BD9F /* FirstViewController.swift in Sources */,
+				3E488C872454E55D00375AD8 /* WeatherTableViewCell.swift in Sources */,
 				7D416A1D244FF4860096D37D /* WeatherFData.swift in Sources */,
 				7D175B4B244BEA430014BD9F /* WeatherData.swift in Sources */,
 				7D175B47244BE9FA0014BD9F /* WeatherManager.swift in Sources */,
