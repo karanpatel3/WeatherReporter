@@ -105,8 +105,8 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         func textFieldDidEndEditing(_ textField: UITextField) {
             
-            if let city = searchTextField.text {
-                weatherForecast.fetchWeather(cityName: city)
+            if let addr = searchTextField.text {
+                weatherForecast.fetchWeather(addr: addr)
                 //print(city)
             }
             

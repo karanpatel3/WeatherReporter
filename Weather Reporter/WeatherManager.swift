@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-
+var geocoder = CLGeocoder()
 protocol WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
     func didFailWithError(error: Error)
@@ -21,14 +21,17 @@ struct WeatherManager {
     
     var delegate: WeatherManagerDelegate?
     
-    func fetchWeather(cityName: String!)
+    func fetchWeather(addr: String!)
     {
-//        fix to allow cities with two words ex: New York
-        let cityName = String(cityName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-        print(cityName)
-        let urlString = "\(weatherURL)&q=\(String(describing: cityName))"
-        print(urlString)
-        performRequest(with: urlString)
+        geocoder.geocodeAddressString(addr) { placemarks, error in
+            let placemark = placemarks?.first
+            if let location = placemark?.location {
+                let lat = location.coordinate.latitude
+                let lon = location.coordinate.longitude
+                //print("\(lat), \(lon)")
+                self.fetchWeather(latitude: lat, longitude: lon)
+            }
+        }
     }
     
     func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {

@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
-        <!--Search-->
+        <!--7 Days-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Weather_Reporter" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,7 +263,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ee1-a7-PyL"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="7 Days" image="magnifyingglass" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="cityName" destination="MCJ-DS-4mt" id="ZMN-uj-w7V"/>
                         <outlet property="searchTextField" destination="Zhq-Bd-Ikf" id="r8t-QX-pTV"/>

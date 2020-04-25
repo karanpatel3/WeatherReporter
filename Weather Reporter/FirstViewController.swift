@@ -67,8 +67,8 @@ class FirstViewController: UIViewController {
         
         func textFieldDidEndEditing(_ textField: UITextField) {
             
-            if let city = searchTextField.text {
-                weatherManager.fetchWeather(cityName: city)
+            if let addr = searchTextField.text {
+                weatherManager.fetchWeather(addr: addr)
             }
             
             searchTextField.text = ""

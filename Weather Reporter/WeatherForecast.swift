@@ -21,13 +21,17 @@ let weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?appid=8
 
 var delegate: WeatherForecastDelegate?
 
-func fetchWeather(cityName: String)
+func fetchWeather(addr: String!)
 {
-    let cnt = 7
-    let cityName = String(cityName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-    let urlString = "\(weatherURL)&q=\(cityName)&cnt=\(cnt)"
-    print(urlString)
-    performRequest(with: urlString)
+    geocoder.geocodeAddressString(addr) { placemarks, error in
+        let placemark = placemarks?.first
+        if let location = placemark?.location {
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            //print("\(lat), \(lon)")
+            self.fetchWeather(latitude: lat, longitude: lon)
+        }
+    }
 }
 
 func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
