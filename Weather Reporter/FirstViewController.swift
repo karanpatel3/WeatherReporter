@@ -20,7 +20,7 @@ class FirstViewController: UIViewController {
     
         var weatherManager = WeatherManager()
         let locationManager = CLLocationManager()
-        
+        var cityname: String?
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -36,10 +36,6 @@ class FirstViewController: UIViewController {
             locationManager.requestLocation()
             
         }
-        
-
- 
-    
     }
 
     //MARK: - UITextFieldDelegate
@@ -68,6 +64,7 @@ class FirstViewController: UIViewController {
         func textFieldDidEndEditing(_ textField: UITextField) {
             
             if let addr = searchTextField.text {
+                self.cityname = addr
                 weatherManager.fetchWeather(addr: addr)
             }
             
@@ -77,13 +74,19 @@ class FirstViewController: UIViewController {
 
     extension FirstViewController: WeatherManagerDelegate {
         func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-            
+            let lat = weather.latitute
+            let lon = weather.longitute
             DispatchQueue.main.async { // Correct
                 self.temperatureLabel.text = weather.temperatureString
                 self.descriptionLabel.text = weather.description.capitalized
                 //self.conditionImageView.image = UIImage(systemName: weather.conditionName)
                 self.conditionImageView.image = UIImage(named: weather.conditionName)
-                self.cityLabel.text = weather.cityName
+                //self.cityLabel.text = self.cityname
+                let location = CLLocation(latitude: lat, longitude: lon)
+                self.lookUpCurrentLocation(location: location, completionHandler: {placemark in
+                    self.cityLabel.text = placemark?.locality
+                })
+                
             }
             
             
@@ -92,6 +95,26 @@ class FirstViewController: UIViewController {
         func didFailWithError(error: Error) {
             print(error)
         }
+        
+        func lookUpCurrentLocation(location: CLLocation, completionHandler: @escaping (CLPlacemark?)
+                        -> Void ) {
+            // Use the last reported location.
+            let lastLocation = location
+                let geocoder = CLGeocoder()
+                    
+                // Look up the location and pass it to the completion handler
+                geocoder.reverseGeocodeLocation(lastLocation,
+                            completionHandler: { (placemarks, error) in
+                    if error == nil {
+                        let firstLocation = placemarks?[0]
+                        completionHandler(firstLocation)
+                    }
+                    else {
+                     // An error occurred during geocoding.
+                        completionHandler(nil)
+                    }
+                })
+            }
 
     }
 
@@ -109,5 +132,7 @@ class FirstViewController: UIViewController {
         func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
             print(error)
         }
+        
+        
 }
 

@@ -19,7 +19,6 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var table: UITableView!
     
     var models = [WeatherFModel]()
-    
     let locationManager = CLLocationManager()
     
     var weatherForecast = WeatherForecast()
@@ -124,9 +123,15 @@ extension SecondViewController: WeatherForecastDelegate {
 //        let temps = [self.temp1, self.temp2, self.temp3, self.temp4, self.temp5]
 //        let dts = [self.dt1, self.dt2, self.dt3, self.dt4, self.dt5]
         //print(weathers)
+        let lat = weathers[0].weather.latitute
+        let lon = weathers[0].weather.longitute
         DispatchQueue.main.async {
+            let location = CLLocation(latitude: lat, longitude: lon)
+            self.lookUpCurrentLocation(location: location, completionHandler: {placemark in
+                self.cityName.text = placemark?.locality
+            })
             self.table.reloadData()
-            self.cityName.text = weathers[0].cityName
+//            self.cityName.text = weathers[0].cityName
 //            self.cityName.text = weathers[0].cityName
 //            for (i, imageView) in images.enumerated(){
 //                //imageView?.image = UIImage(systemName: weathers[i].weather.conditionName)
@@ -142,6 +147,26 @@ extension SecondViewController: WeatherForecastDelegate {
     func didFailWithError(error: Error) {
         print(error)
     }
+    
+    func lookUpCurrentLocation(location: CLLocation, completionHandler: @escaping (CLPlacemark?)
+                    -> Void ) {
+        // Use the last reported location.
+        let lastLocation = location
+            let geocoder = CLGeocoder()
+                
+            // Look up the location and pass it to the completion handler
+            geocoder.reverseGeocodeLocation(lastLocation,
+                        completionHandler: { (placemarks, error) in
+                if error == nil {
+                    let firstLocation = placemarks?[0]
+                    completionHandler(firstLocation)
+                }
+                else {
+                 // An error occurred during geocoding.
+                    completionHandler(nil)
+                }
+            })
+        }
 
 }
 

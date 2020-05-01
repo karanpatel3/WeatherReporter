@@ -17,7 +17,8 @@ protocol WeatherForecastDelegate {
 
 
 struct WeatherForecast {
-let weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
+//let weatherURL = "https://api.openweathermap.org/data/2.5/forecast/daily?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
+let weatherURL = "https://api.openweathermap.org/data/2.5/onecall?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
 
 var delegate: WeatherForecastDelegate?
 
@@ -35,8 +36,7 @@ func fetchWeather(addr: String!)
 }
 
 func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-    let cnt = 7
-    let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)&cnt=\(cnt)"
+    let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
     print(urlString)
     performRequest(with: urlString)
 }
@@ -65,20 +65,35 @@ func performRequest(with urlString: String) {
 func parseJSON(_ weatherFData: Data) -> [WeatherFModel]?{
     let decoder = JSONDecoder()
     do {
-        let decodedData = try decoder.decode(WeatherFData.self, from: weatherFData)
-        let name = decodedData.city.name
-        print(name)
+        //let decodedData = try decoder.decode(WeatherFData.self, from: weatherFData)
+//        let name = decodedData.city.name
+//        let lat = decodedData.city.
+//        print(name)
+//        var weatherFModels = [WeatherFModel]()
+//        for day in decodedData.list{
+//            let tem = day.temp.day
+//            let dt = day.dt
+//            //let feels = day.feels_like
+//            let press = day.pressure
+//            let humi = day.humidity
+//            let id = (day.weather[0].id)
+//            let desc = day.weather[0].descriptio
+//            let weather = WeatherModel(conditionId: id, temperature: tem, description: desc)
+//            weatherFModels.append(WeatherFModel(dateTime: dt, cityName: name, pressure: press, humidity: humi, weather: weather))
+//        }
+        let decodedData = try decoder.decode(OneCallData.self, from: weatherFData)
+        let lat = decodedData.lat
+        let lon = decodedData.lon
         var weatherFModels = [WeatherFModel]()
-        for day in decodedData.list{
+        for day in decodedData.daily{
             let tem = day.temp.day
             let dt = day.dt
-            //let feels = day.feels_like
             let press = day.pressure
             let humi = day.humidity
-            let id = (day.weather[0].id)
+            let id = day.weather[0].id
             let desc = day.weather[0].description
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: tem, description: desc)
-            weatherFModels.append(WeatherFModel(dateTime: dt, cityName: name, pressure: press, humidity: humi, weather: weather))
+            let weather = WeatherModel(conditionId: id, latitute: lat, longitute: lon, temperature: tem, description: desc)
+            weatherFModels.append(WeatherFModel(dateTime: dt, pressure: press, humidity: humi, weather: weather))
         }
         return weatherFModels
         

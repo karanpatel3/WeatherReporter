@@ -17,8 +17,9 @@ protocol WeatherManagerDelegate {
 
 
 struct WeatherManager {
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
+//    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
     
+    let weatherURL = "https://api.openweathermap.org/data/2.5/onecall?appid=84dde353cf2757e657ef9075598771c2&units=imperial"
     var delegate: WeatherManagerDelegate?
     
     func fetchWeather(addr: String!)
@@ -52,6 +53,7 @@ struct WeatherManager {
                     return
                 }
                 if let safeData = data {
+//                    self.parseJSON(safeData)
                     if let weather = self.parseJSON(safeData) {
                         self.delegate?.didUpdateWeather(self, weather: weather)
                     }
@@ -85,12 +87,13 @@ func parseJSON(_ weatherData: Data) -> WeatherModel?{
         let decoder = JSONDecoder()
         
         do {
-            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let id = (decodedData.weather[0].id)
-            let temp = decodedData.main.temp
-            let name = decodedData.name
-            let desc = decodedData.weather[0].description
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp, description: desc)
+            let decodedData = try decoder.decode(OneCallData.self, from: weatherData)
+            let id = (decodedData.current.weather[0].id)
+            let temp = decodedData.current.temp
+            let desc = decodedData.current.weather[0].description
+            let lon = decodedData.lon
+            let lat = decodedData.lat
+            let weather = WeatherModel(conditionId: id, latitute: lat,longitute: lon, temperature: temp, description: desc)
             return weather
         } catch {
             delegate?.didFailWithError(error: error)
